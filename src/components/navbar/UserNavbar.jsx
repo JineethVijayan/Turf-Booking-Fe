@@ -5,7 +5,7 @@ const UserNavbar = () => {
 
     const navLinks = [
         {
-            path: "/user/home",
+            path: "/user/dashbord",
             value: "Home"
         },
         {
@@ -23,12 +23,14 @@ const UserNavbar = () => {
     ]
 
     return (
-        <div className='flex justify-between p-4 text-xl shadow-lg'>
+        <div className='flex justify-between p-4 text-xl fixed w-full  '>
             <h1>Logo</h1>
             <ul className='flex items-center gap-x-5'>
                 {navLinks.map((link, index) =>
 
-                    <Link key={index} to={link.path} > {link.value}</Link>
+                    <Link key={index} to={link.path} >
+                        <li className='text-green-800 px-5 '>{link.value}</li>
+                    </Link>
 
                 )}
             </ul>

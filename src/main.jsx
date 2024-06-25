@@ -18,6 +18,13 @@ import HomeLayout from './layout/HomeLayout';
 import App from './App';
 import UserLayout from './layout/UserLayout';
 import ManagerLayout from './layout/ManagerLayout';
+import AdminDashbord from './components/admin/AdminDashbord';
+import AdminDashbordPage from './pages/admin/AdminDashbordPage';
+import AdminLayout from './layout/AdminLayout';
+import AddTurfPage from './pages/manager/AddTurfPage';
+import UserTurfsPage from './pages/user/UserTurfsPage';
+import AdminTurfsPage from './pages/admin/AdminTurfsPage';
+import UpdateformPage from './pages/admin/UpdateformPage';
 
 
 
@@ -55,6 +62,10 @@ const router = createBrowserRouter([
       {
         path:"/user/dashbord",
         element: <UserDashbordPage />
+      },
+      {
+        path:"/user/turfs",
+        element:<UserTurfsPage />
       }
     ]
   },
@@ -64,13 +75,33 @@ const router = createBrowserRouter([
     element:<ManagerLayout />,
     children:[
       {
-        path:"manager/dashbord",
+        path:"/manager/dashbord",
         element: <ManagerDashbordPage />
+      },
+      {
+        path:"/manager/add-turf",
+        element:<AddTurfPage />
       }
     ]
-  }
+  },
 
-
+{
+  element:<AdminLayout />,
+  children:[
+    {
+      path:'/admin/dashbord',
+      element:<AdminDashbordPage />
+    },
+    {
+      path:"/admin/turfs",
+      element:<AdminTurfsPage />
+    },
+    {
+      path:"/admin/turfs/update/:id",
+      element:<UpdateformPage />
+    }
+  ]
+}
   
 ]);
 

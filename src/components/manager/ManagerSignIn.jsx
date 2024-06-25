@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const managerSigninSchema = yup
     .object({
@@ -15,6 +17,7 @@ const managerSigninSchema = yup
 
 const ManagerSignIn = () => {
 
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -23,8 +26,24 @@ const ManagerSignIn = () => {
 
     const onSubmit = async (data) => {
 
-        await axios.post('http://localhost:3001/api/v1/managers/signin')
-        console.log(data)
+        try {
+            const res = await axios.post('http://localhost:3001/api/v1/managers/signin',
+                data,
+                { withCredentials: true }
+            )
+            const resData = await res.data;
+            console.log(resData.role);
+
+            if(resData.role === 'admin'){
+                navigate('/admin/dashbord')
+            }else if (resData.role === 'manager') {
+                navigate('/manager/dashbord')
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
 
     }
 
@@ -33,7 +52,8 @@ const ManagerSignIn = () => {
             <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col w-96  bg-neutral-800 px-6 py-6'>
 
                 <input type="email"  {...register('email')} name="email" placeholder='Email' className='mb-2 ps-1 py-1.5' />
-                {errors.email?.message}
+                {/* {errors.email?.message} */}
+                {errors.email && <p>{errors.email.message}</p>}
                 <input type="password" {...register('password')} name="password" placeholder='Password' className='mb-2 ps-1 py-1.5' />
                 {errors.password?.message}
                 <input type="submit" value="Login" />

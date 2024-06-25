@@ -4,8 +4,8 @@ import UserNavbar from '../components/navbar/UserNavbar'
 
 const UserLayout = () => {
     return (
-        <div>
-            <nav>
+        <div className=''>
+            <nav className=' '>
                 <UserNavbar />
             </nav>
 
