@@ -1,14 +1,34 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const AdminTurfCard = ({ id, image, title, description, price }) => {
+const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
 
-    console.log(id);
+    console.log(_id);
+
+    const [manager,setManager] = useState([]);
+
+    useEffect(() => {
+        const getManagerById = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/api/v1/managers/get-manager/${ _id}`,
+                    {withCredentials:true}
+                )
+                const managerData = await response.data ;
+
+                setManager(managerData);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getManagerById();
+    }, [])
 
     const remove = async () => {
 
-        const res = axios.delete(`http://localhost:3001/api/v1/turfs/delete-turfs/${id}`);
+        const res = axios.delete(`http://localhost:3001/api/v1/turfs/delete-turfs/${id}`,
+            { withCredentials: true }
+        );
         const data = (await res).data;
         console.log(data);
 
@@ -17,7 +37,8 @@ const AdminTurfCard = ({ id, image, title, description, price }) => {
         }
 
 
-    }
+    };
+
 
     return (
         <div>
@@ -26,6 +47,7 @@ const AdminTurfCard = ({ id, image, title, description, price }) => {
                 <Link to="#">
                     <img className="rounded-t-lg h-52 w-full object-cover" src={image} alt="" />
                 </Link>
+                <h1>{manager.name}</h1>
                 <div className="p-5">
                     <Link to="#">
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>

@@ -1,10 +1,15 @@
 import React from 'react'
-import UserDashbord from '../../components/user/userDashbord'
+import FirstView from '../../components/user/FirstView'
+import UserTurfs from '../../components/user/UserTurfs'
+import Sports from '../../components/user/Sports'
+
 
 const UserDashbordPage = () => {
   return (
-    <div>
-      <UserDashbord />
+    <div className='bg-stone-200'>
+      <FirstView />
+      <UserTurfs />
+      <Sports />
     </div>
   )
 }

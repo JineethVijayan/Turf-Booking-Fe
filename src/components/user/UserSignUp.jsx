@@ -25,19 +25,29 @@ const UserSignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
     const onSubmit = async (data) => {
-        const res = await axios.post(
-            "http://localhost:3001/api/v1/user/signup",
+        try {
 
-            data,
-            {
-                withCredentials: true
+            const res = await axios.post(
+                "http://localhost:3001/api/v1/user/signup",
+
+                data,
+                {
+                    withCredentials: true
+                }
+            );
+
+            const resData = await res.data;
+
+
+
+            if (resData === "signed up successfully") {
+                alert('Signed up successfully! Please log in.');
+                navigate("/user/signin");
             }
-        );
 
-        const resData = await res.data;
 
-        if (resData === "signed up successfully") {
-            navigate("/user/dashbord")
+        } catch (error) {
+            console.log(error);
         }
 
     }
@@ -48,7 +58,7 @@ const UserSignUp = () => {
         <div className="flex justify-center items-center h-screen  ">
 
             <div className='flex  shadow-sm shadow-slate-800 p-3'>
-            <div className="w-96 h-96 bg-[url('../images/playground.jpg')] bg-no-repeat bg-cover bg-center  ">
+                <div className="w-96 h-96 bg-[url('../images/playground.jpg')] bg-no-repeat bg-cover bg-center  ">
                     <p></p>
                 </div>
 

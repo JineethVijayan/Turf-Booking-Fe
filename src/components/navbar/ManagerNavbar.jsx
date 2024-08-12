@@ -5,7 +5,7 @@ const ManagerNavbar = () => {
 
     const navLinks = [
         {
-            path: "/manager/turf",
+            path: `/manager/my-turf`,
             value: "My Turf"
         },
         {
@@ -25,7 +25,7 @@ const ManagerNavbar = () => {
                 {navLinks.map((link, index) =>
 
                     <Link key={index} to={link.path} >
-                    <li className='text-green-800 px-5 '>{link.value}</li>
+                        <li className='text-green-800 px-5 '>{link.value}</li>
                     </Link>
 
                 )}

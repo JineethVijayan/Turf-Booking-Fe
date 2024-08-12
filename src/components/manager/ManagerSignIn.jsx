@@ -32,12 +32,14 @@ const ManagerSignIn = () => {
                 { withCredentials: true }
             )
             const resData = await res.data;
-            console.log(resData.role);
-
-            if(resData.role === 'admin'){
-                navigate('/admin/dashbord')
-            }else if (resData.role === 'manager') {
-                navigate('/manager/dashbord')
+            // console.log(resData);
+            // console.log(resData.role);
+            // const id = resData.manager._id
+            // console.log(id);
+            if (resData.role === 'admin') {
+                navigate(`/admin/dashbord`)
+            } else if (resData.role === 'manager') {
+                navigate(`/manager/my-turf`)
             }
 
         } catch (error) {

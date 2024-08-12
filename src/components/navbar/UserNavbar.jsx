@@ -9,7 +9,7 @@ const UserNavbar = () => {
             value: "Home"
         },
         {
-            path: "/user/turfs",
+            path: "/user/turfs/all",
             value: "Turfs"
         },
         {

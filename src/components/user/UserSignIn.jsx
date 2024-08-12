@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const userSigninSchema = yup
@@ -14,13 +14,30 @@ const userSigninSchema = yup
   .required()
 
 const UserSignIn = () => {
-
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(userSigninSchema) });
 
   const OnSubmit = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:3001/api/v1/user/signin",
+         data,
+         { withCredentials: true }
+        );
 
-    await axios.post("http://localhost:3001/api/v1/user/signin", data);
-    console.log(data);
+      const resData = res.data;
+
+      console.log(resData);
+
+      if (resData.message === 'loged in') {
+        alert("Successfully loged in ")
+        navigate("/user/dashbord")
+      } else {
+        alert('something wrog try again')
+      }
+
+    } catch (error) {
+
+    }
 
   }
 

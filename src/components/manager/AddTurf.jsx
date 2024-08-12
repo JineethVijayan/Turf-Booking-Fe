@@ -1,13 +1,17 @@
 import React from 'react'
+
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import axios from 'axios'
+import MultipleSelect from './MultipleSelect'
+
 
 const schema = yup
     .object({
         managerEmail: yup.string().email().required('required'),
         title: yup.string().required('required'),
+        category:yup.array().of(yup.string()).required('required'),
         description: yup.string().required('required'),
         price: yup.number().positive().required('required'),
         image: yup.mixed().required('required')
@@ -17,6 +21,12 @@ const schema = yup
 
 
 const AddTurf = () => {
+
+///////
+
+
+
+    ////
 
     const {
         register,
@@ -28,6 +38,7 @@ const AddTurf = () => {
 
         const requestBody = {
             title: data.title,
+            category:data.category,
             description: data.description,
             price: data.price,
             managerEmail: data.managerEmail,
@@ -68,7 +79,12 @@ const AddTurf = () => {
                         {errors.managerEmail?.message}
                         <input type="text" name="title" {...register('title')} placeholder='Title' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.title?.message}
-                        <textarea name="description" {...register('description')} placeholder='Description' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+
+
+
+<MultipleSelect category='category' register={register} error={errors.category}/>
+
+                        <textarea name="description" {...register('description')} placeholder='Description' className='mt-4 mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.description?.message}
                         <input type="text" name="price" {...register('price')} placeholder='Price' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.price?.message}
