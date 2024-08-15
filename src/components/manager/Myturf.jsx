@@ -38,7 +38,7 @@ const Myturf = () => {
         const response = await axios.post(`http://localhost:3001/api/v1/turfs/get-turfsByIds`, { ids: datas },
           { withCredentials: true }
         );
-        const turfsData = response.data;
+        const turfsData =await response.data;
         console.log(turfsData);
         setMyturfs(turfsData);
 

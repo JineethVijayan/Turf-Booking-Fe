@@ -17,7 +17,7 @@ const UsersTable = () => {
                     { withCredentials: true }
                 )
 
-                const userData = res.data;
+                const userData =await res.data;
 
                 console.log(userData);
 

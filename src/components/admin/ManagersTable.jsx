@@ -20,7 +20,7 @@ const ManagersTable = () => {
                     {withCredentials:true}
                 );
 
-                const resData = res.data;
+                const resData = await res.data
 
                 console.log(resData);
 

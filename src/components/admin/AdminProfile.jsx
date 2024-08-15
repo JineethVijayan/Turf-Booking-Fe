@@ -15,7 +15,7 @@ const AdminProfile = () => {
             const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
               { withCredentials: true }
             )
-            const resData = res.data;
+            const resData =await res.data;
             //console.log(resData);
           
             setManager(resData);
