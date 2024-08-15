@@ -31,7 +31,8 @@ const AdminProfile = () => {
 
 
 
-    const handleLogout = async () => {
+    const handleLogout = async (event) => {
+        event.preventDefault();
         try {
             // Send a request to the logout route
             const res = await axios.post('http://localhost:3001/api/v1/managers/logout',
@@ -62,7 +63,7 @@ const AdminProfile = () => {
                 </div>
                 <div className="p-4 my-6">
                     <button
-                        onClick={handleLogout}
+                        onClick={  handleLogout}
                         className="w-full bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700"
                     >
                         Logout
