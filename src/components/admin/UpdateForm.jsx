@@ -37,6 +37,7 @@ const UpdateForm = () => {
 
         try {
             const res = await axios.put(`http://localhost:3001/api/v1/turfs/update-turfs/${id}`, data)
+            
             alert("data updated succesfully");
             navigate('/admin/turfs');
         } catch (error) {

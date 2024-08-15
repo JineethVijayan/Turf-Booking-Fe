@@ -23,7 +23,6 @@ import AdminTurfsPage from './pages/admin/AdminTurfsPage';
 import UpdateformPage from './pages/admin/UpdateformPage';
 import ManagersTablePage from './pages/admin/ManagersTablePage';
 import UsersTablePage from './pages/admin/UsersTablePage';
-import MyturfPage from './pages/manager/MyturfPage';
 import GestHomePage from './pages/guest/GestHomePage';
 import TurfDetails from './components/user/TurfDetails';
 import AllTurf from './components/user/AllTurf';
@@ -35,6 +34,12 @@ import Tennis from './components/user/Tennis';
 import TableTennis from './components/user/TableTennis';
 import BookingsPage from './pages/user/BookingsPage';
 import BookingsDetails from './components/user/BookingsDetails';
+import Profile from './components/user/Profile';
+import ManagerUpdateForm from './components/admin/ManagerUpdateForm';
+import AdminProfile from './components/admin/AdminProfile';
+import Myturf from './components/manager/Myturf';
+import MyTurfupdateForm from './components/manager/MyTurfupdateForm';
+
 
 
 
@@ -125,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "/user/turf/:id",
         element: <TurfDetails />
+      },
+      {
+        path: "/user/profile",
+        element: <Profile />
       }
 
     ]
@@ -140,12 +149,20 @@ const router = createBrowserRouter([
         element: <ManagerDashbordPage />
       },
       {
+        path:"/manager/my-turf",
+        element:<Myturf />
+      },
+      {
+path:"/manager/turfs/update/:id",
+element:<MyTurfupdateForm />
+      },
+      {
         path: "/manager/add-turf",
         element: <AddTurfPage />
       },
       {
-        path: "/manager/my-turf",
-        element: <MyturfPage />
+        path:"/manager/profile",
+        element:<AdminProfile />
       }
     ]
   },
@@ -166,12 +183,20 @@ const router = createBrowserRouter([
         element: <UpdateformPage />
       },
       {
+        path: "/admin/managers/update/:id",
+        element: <ManagerUpdateForm />
+      },
+      {
         path: "/admin/managers",
         element: <ManagersTablePage />
       },
       {
         path: "/admin/users",
         element: <UsersTablePage />
+      },
+      {
+        path:"/admin/profile",
+        element:<AdminProfile />
       }
     ]
   }

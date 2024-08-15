@@ -50,25 +50,39 @@ const ManagerSignIn = () => {
     }
 
     return (
-        <div className='flex justify-center items-center h-screen'>
-            <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col w-96  bg-neutral-800 px-6 py-6'>
 
-                <input type="email"  {...register('email')} name="email" placeholder='Email' className='mb-2 ps-1 py-1.5' />
-                {/* {errors.email?.message} */}
-                {errors.email && <p>{errors.email.message}</p>}
-                <input type="password" {...register('password')} name="password" placeholder='Password' className='mb-2 ps-1 py-1.5' />
-                {errors.password?.message}
-                <input type="submit" value="Login" />
+/////
 
-                <p>
-                    Manager not created yet{" "}
-                    <Link to="/manager/signup" className="text-blue-500 underline">
-                        Signup
-                    </Link>
-                </p>
+<div className='flex justify-center items-center h-screen'>
 
-            </form>
-        </div>
+<div className='flex  shadow-sm shadow-slate-800 p-3'>
+  <div className="w-96 h-96 bg-[url('../images/playground.jpg')] bg-no-repeat bg-cover bg-center ">
+
+  </div>
+
+  <div className='w-96  px-6 py-6 flex items-center '>
+    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col  w-full  '>
+      <input type="email" {...register("email")} name="email" placeholder='Email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+      {errors.email?.message}
+      <input type="password"  {...register("password")} name="password" placeholder='password' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+      {errors.password?.message}
+      <input type="submit" value="Login" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
+
+      <p className=' ms-16 mt-4'>
+        User not created yet ?{" "}
+        <Link to="/manager/signup" className="text-blue-500 underline">
+          Signup
+        </Link>
+      </p>
+
+    </form>
+  </div>
+</div>
+</div>
+
+
+////////
+       
     )
 }
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
 
-    console.log(_id);
+  //  console.log(_id);
 
     const [manager,setManager] = useState([]);
 

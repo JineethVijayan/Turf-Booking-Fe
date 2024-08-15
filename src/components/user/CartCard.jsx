@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import ButtonPayment from './ButtonPayment';
+
 
 const CartCard = ({ title, image, description, price,turf, turfid, userid }) => {
 
@@ -27,7 +29,7 @@ const CartCard = ({ title, image, description, price,turf, turfid, userid }) => 
                         <img className="w-36 h-36 object-cover" src={image} alt="Turf image" />
                     </div>
                     <div className="flex-1 min-w-0 ms-4">
-                        <h1>{turfid}</h1>
+                        
                         <h1 className="text-sm font-medium text-gray-900 truncate ">
                             {title}
                         </h1>
@@ -36,7 +38,8 @@ const CartCard = ({ title, image, description, price,turf, turfid, userid }) => 
                         </p>
                     </div>
                     <div className="inline-flex items-center text-base font-semibold text-gray-900 pe-8">
-                        <button onClick={()=>navigate('/user/bookings/bookings-details',{state:{turf:turf}})} className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded'>Book now</button>
+                   <ButtonPayment turf={turf} />
+                       
                         <button onClick={handleRemove} className='px-2 py-1.5 w-24 ms-32 bg-red-800 text-white hover:bg-red-600 hover:text-black rounded'>Remove</button>
                     </div>
                 </div>

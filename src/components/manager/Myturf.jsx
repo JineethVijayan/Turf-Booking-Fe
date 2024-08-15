@@ -52,6 +52,20 @@ const Myturf = () => {
     }
   }, [datas])
 
+  const remove = async (id) => {
+
+    const res = axios.delete(`http://localhost:3001/api/v1/turfs/delete-turfs/${id}`,
+        { withCredentials: true }
+    );
+    const data = (await res).data;
+    console.log(data);
+
+    if (data === 'turf deleted') {
+        window.location.reload();
+    }
+
+
+};
 
 
 
@@ -61,11 +75,10 @@ const Myturf = () => {
                      grid-flow-row gap-4 auto-rows-auto'>
       {
         myturfs && myturfs.map(turf => (
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="ms-10 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <Link to="#">
               <img className="rounded-t-lg h-52 w-full object-cover" src={turf.image} alt="" />
             </Link>
-            <h1>{turf.title}</h1>
             <div className="p-5">
               <Link to="#">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{turf.title}</h5>
@@ -78,12 +91,11 @@ const Myturf = () => {
                   {turf.price}
                 </Link>
                 <div>
-                  <Link to={``} className="inline-flex items-center me-3 px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                  <Link to={`/manager/turfs/update/${turf._id}`} className="inline-flex items-center me-3 px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
                     Edit
                   </Link>
-
-                  <Link to="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                    Delete
+                  <Link onClick={(e)=> remove(turf._id)} className="inline-flex items-center me-3 px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                    delete
                   </Link>
                 </div>
               </div>

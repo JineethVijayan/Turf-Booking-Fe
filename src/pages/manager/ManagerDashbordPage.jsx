@@ -1,10 +1,10 @@
 import React from 'react'
-import ManagerDashbord from '../../components/manager/ManagerDashbord'
+import Myturf from '../../components/manager/Myturf'
 
 const ManagerDashbordPage = () => {
   return (
     <div>
-      <ManagerDashbord />
+      <Myturf />
     </div>
   )
 }

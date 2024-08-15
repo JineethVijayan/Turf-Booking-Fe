@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import axios from 'axios'
 import MultipleSelect from './MultipleSelect'
+import { useNavigate } from 'react-router-dom'
 
 
 const schema = yup
     .object({
-        managerEmail: yup.string().email().required('required'),
+        managerEmail: yup.string().email(),
         title: yup.string().required('required'),
-        category:yup.array().of(yup.string()).required('required'),
+        category: yup.array().of(yup.string()).required('required'),
         description: yup.string().required('required'),
         price: yup.number().positive().required('required'),
         image: yup.mixed().required('required')
@@ -22,8 +23,31 @@ const schema = yup
 
 const AddTurf = () => {
 
-///////
+const navigate =useNavigate();
 
+const [manager,setManager] =useState([]);
+
+    ///////
+
+    useEffect(() => {
+        const currentManger = async () => {
+    
+          try {
+            const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
+              { withCredentials: true }
+            )
+            const resData = res.data;
+            //console.log(resData);
+          
+            setManager(resData);
+            //console.log(turfs);
+          } catch (error) {
+            console.log(error);
+          }
+    
+        };
+        currentManger();
+      }, [])
 
 
     ////
@@ -38,7 +62,7 @@ const AddTurf = () => {
 
         const requestBody = {
             title: data.title,
-            category:data.category,
+            category: data.category,
             description: data.description,
             price: data.price,
             managerEmail: data.managerEmail,
@@ -56,8 +80,12 @@ const AddTurf = () => {
                     },
                 }
             )
-            const resData = res.data;
-            console.log(resData);
+            const resData = await res.data;
+           // console.log(resData);
+           if(resData.message ==='created'){
+            alert('new turf created');
+            navigate('/manager/my-turf');
+           }
 
         } catch (error) {
             console.log(error);
@@ -75,14 +103,14 @@ const AddTurf = () => {
                 </div>
                 <div className='w-96  px-6 py-6 flex items-center'>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full'>
-                        <input type="email" name='email' {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        <input type="email" name='email' value={manager.email} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.managerEmail?.message}
                         <input type="text" name="title" {...register('title')} placeholder='Title' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.title?.message}
 
 
 
-<MultipleSelect category='category' register={register} error={errors.category}/>
+                        <MultipleSelect category='category' register={register} error={errors.category} />
 
                         <textarea name="description" {...register('description')} placeholder='Description' className='mt-4 mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.description?.message}
