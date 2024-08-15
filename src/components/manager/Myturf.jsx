@@ -10,6 +10,8 @@ const Myturf = () => {
   //console.log(datas);
   const [myturfs, setMyturfs] = useState([]);
 
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
     const currentManger = async () => {
 

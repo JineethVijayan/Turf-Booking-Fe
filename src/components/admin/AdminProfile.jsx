@@ -8,6 +8,9 @@ const AdminProfile = () => {
 
     const navigate = useNavigate();
 
+    axios.defaults.withCredentials = true;
+
+
     useEffect(() => {
         const currentManger = async () => {
     
