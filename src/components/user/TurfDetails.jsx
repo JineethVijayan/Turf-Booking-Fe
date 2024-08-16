@@ -65,15 +65,15 @@ const TurfDetails = () => {
 
   const handleClick = async () => {
 
-    const turfid = datas._id
-    const userid = user._id
-console.log(`turf id ${turfid}`);
+    const turfId = datas._id
+    const userId = user._id
+console.log(`turf id ${turfId}`);
 
-console.log(`user id ${userid}`);
+console.log(`user id ${userId}`);
 
     try {
 
-      const res = await axios.post("http://localhost:3001/api/v1/carts/addCart", { turfid, userid });
+      const res = await axios.post("http://localhost:3001/api/v1/carts/addCart", { turfId, userId });
 
       const resData = await res.data;
 
