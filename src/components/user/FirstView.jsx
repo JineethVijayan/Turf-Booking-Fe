@@ -7,7 +7,7 @@ const FirstView = () => {
                 <h1 className='text-4xl leading-10 font-semibold text-black'>Easily book your favorite playgrounds
                     with just a few taps</h1>
             </div>
-            <div className=" grid grid-cols-2 sm:w-2/4  h-96  ms-10 ">
+            <div className=" grid grid-cols-2 sm:w-2/4  h-96  ms-10 bg-cover">
                 <div className=" bg-[url('../images/Turf-unsplash.jpg')] bg-no-repeat bg-cover bg-center">
 
                 </div>

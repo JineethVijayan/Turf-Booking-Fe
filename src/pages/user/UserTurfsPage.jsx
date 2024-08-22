@@ -1,15 +1,17 @@
 import React from 'react'
-import UserTurfs from '../../components/user/UserTurfs'
+
 import TurfNavbar from '../../components/navbar/TurfNavbar'
 import { Outlet } from 'react-router-dom'
-import UserNavbar from '../../components/navbar/UserNavbar'
+import TestNavbar from '../../components/navbar/TestNavbar'
+
+
 
 const UserTurfsPage = () => {
   return (
     <div >
-    <UserNavbar />
+   
       <nav className=' pt-52'>
-        <TurfNavbar />
+       <TurfNavbar />
       </nav>
 
       <Outlet />

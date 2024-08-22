@@ -11,7 +11,7 @@ const GuestSports = () => {
 }
 
     return (
-        <div className='bg-stone-50 m-10 rounded-3xl sm:mb-0'>
+        <div className='bg-stone-50 m-10 mb-0 rounded-3xl sm:mb-0'>
     
           <h1 className='text-3xl ps-4 pt-4 text-[#008000]'>Popular Sports</h1>
     

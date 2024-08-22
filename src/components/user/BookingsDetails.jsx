@@ -57,7 +57,7 @@ const BookingsDetails = () => {
                 );
                 const resData = await res.data;
                 setUser(resData);
-                
+
             } catch (error) {
                 console.log(error);
             }
@@ -116,39 +116,63 @@ const BookingsDetails = () => {
 
 
 
-<div className='flex justify-center items-center h-screen pt-20 '>
+        <div className='flex justify-center items-center h-screen pt-20 '>
             <div className='flex  shadow-sm shadow-slate-800 p-3'>
-                <div className="w-96 h-96 bg-[url('../public/images/playground.jpg')] bg-no-repeat bg-cover bg-center  ">
-                    <p></p>
+                <div className="w-96 h-96 bg-[url('../public/images/playground.jpg')] bg-no-repeat bg-cover bg-center flex items-center  ">
+
+                    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full md:hidden p-8 '>
+
+                        <input type="email" name='userEmail' value={user.email} disabled {...register('userEmail')} placeholder='email' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.userEmail?.message}
+                        <input type="text" name="turfName" value={turf.title} disabled {...register('turfName')} placeholder='TurfName' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.turfName?.message}
+                        <input type="text" name="turfId" value={turf._id} disabled {...register('turfId')} placeholder='TurfId' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.turfId?.message}
+
+                        <select name="category" {...register('category')} className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800'>
+                            {category && category.map((item, index) => <option key={index} value={item}>{item}</option>)}
+                        </select>
+                        {errors.category?.message}
+
+                        <input type="date" name="date" {...register('date')} placeholder='date' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.date?.message}
+
+                        <input type="time" name="startingTime" {...register('startingTime')} placeholder='Starting Time' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.startingTime?.message}
+                        <input type="text" name="duration" {...register('duration')} placeholder='Duration' className='mb-2 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.duration?.message}
+                        <input type="submit" value="Submit" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
+
+                    </form>
+
                 </div>
-                <div className='w-96  px-6 py-6 flex items-center'>
-                   
-
-                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full'>
-                <input type="email" name='userEmail' value={user.email} disabled {...register('userEmail')} placeholder='email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.userEmail?.message}
-                <input type="text" name="turfName" value={turf.title} disabled {...register('turfName')} placeholder='TurfName' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.turfName?.message}
-                <input type="text" name="turfId" value={turf._id} disabled {...register('turfId')} placeholder='TurfId' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.turfId?.message}
-
-                <select name="category" {...register('category')} className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800'>
-                    {category && category.map((item, index) => <option key={index} value={item}>{item}</option>)}
-                </select>
-                {errors.category?.message}
-
-                <input type="date" name="date" {...register('date')} placeholder='date' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.date?.message}
-
-                <input type="time" name="startingTime" {...register('startingTime')} placeholder='Starting Time' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.startingTime?.message}
-                <input type="text" name="duration" {...register('duration')} placeholder='Duration' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
-                {errors.duration?.message}
-                <input type="submit" value="Submit" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
+                <div className='w-96  px-6 py-6 md:flex items-center hidden'>
 
 
+                    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full'>
 
-            </form>
+                        <input type="email" name='userEmail' value={user.email} disabled {...register('userEmail')} placeholder='email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.userEmail?.message}
+                        <input type="text" name="turfName" value={turf.title} disabled {...register('turfName')} placeholder='TurfName' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.turfName?.message}
+                        <input type="text" name="turfId" value={turf._id} disabled {...register('turfId')} placeholder='TurfId' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.turfId?.message}
+
+                        <select name="category" {...register('category')} className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800'>
+                            {category && category.map((item, index) => <option key={index} value={item}>{item}</option>)}
+                        </select>
+                        {errors.category?.message}
+
+                        <input type="date" name="date" {...register('date')} placeholder='date' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.date?.message}
+
+                        <input type="time" name="startingTime" {...register('startingTime')} placeholder='Starting Time' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.startingTime?.message}
+                        <input type="text" name="duration" {...register('duration')} placeholder='Duration' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.duration?.message}
+                        <input type="submit" value="Submit" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
+
+                    </form>
 
 
                 </div>

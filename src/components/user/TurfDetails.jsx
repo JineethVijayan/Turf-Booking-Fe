@@ -67,9 +67,9 @@ const TurfDetails = () => {
 
     const turfId = datas._id
     const userId = user._id
-console.log(`turf id ${turfId}`);
+    console.log(`turf id ${turfId}`);
 
-console.log(`user id ${userId}`);
+    console.log(`user id ${userId}`);
 
     try {
 
@@ -77,13 +77,13 @@ console.log(`user id ${userId}`);
 
       const resData = await res.data;
 
-      if(resData ==="already added to bookings"){
+      if (resData === "already added to bookings") {
         alert("Turf already added to bookings");
       }
 
-    //  console.log(resData);
+      //  console.log(resData);
 
-      navigate('/user/bookings',{state:{currentUser:userId}});
+      navigate('/user/bookings', { state: { currentUser: userId } });
 
     } catch (error) {
       console.log(error);
@@ -94,10 +94,10 @@ console.log(`user id ${userId}`);
 
   return (
 
-    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center h-screen  md:pt-16 pt-96 mb-80 md:mb-0 '>
 
-      <div className='flex  shadow-sm shadow-slate-800 p-3'>
-        <div className="w-96 h-96  bg-no-repeat bg-cover bg-center " style={{ backgroundImage: `url(${datas.image})` }}>
+      <div className='md:flex  shadow-sm shadow-slate-800 p-3  '>
+        <div className="w-96 h-96  bg-no-repeat bg-cover bg-center ms-4 md:ms-0" style={{ backgroundImage: `url(${datas.image})` }}>
 
         </div>
 

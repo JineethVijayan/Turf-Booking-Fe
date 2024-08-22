@@ -26,7 +26,7 @@ const AdminTurfs = () => {
     return (
         <div>
         <h1></h1>
-            <div className='pt-24 grid grid-cols-3 
+            <div className='pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 ms-16 md:ms-0 sm:ms-0
                      grid-flow-row gap-4 auto-rows-auto'>
                 {turfs && turfs.map((turf) =>
                     <AdminTurfCard

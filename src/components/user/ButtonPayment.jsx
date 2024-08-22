@@ -97,7 +97,7 @@ const ButtonPayment = ({ turf }) => {
 
     return (
         <div>
-            <button onClick={(e) => paymentHandler(e)} className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded'>Pay&Book</button>
+            <button onClick={(e) => paymentHandler(e)} className='px-2 py-1.5 w-24  bg-green-800 text-white hover:bg-green-600 hover:text-black rounded'>Pay&Book</button>
         </div>
     )
 }

@@ -96,12 +96,33 @@ const [manager,setManager] =useState([]);
     // const onSubmit =  (data) =>console.log(data);
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center h-screen pt-16'>
             <div className='flex  shadow-sm shadow-slate-800 p-3'>
                 <div className="w-96 h-96 bg-[url('../images/playground.jpg')] bg-no-repeat bg-cover bg-center  ">
-                    <p></p>
+                   
+                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full md:hidden p-8'>
+                        <input type="email" name='email' value={manager.email} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.managerEmail?.message}
+                        <input type="text" name="title" {...register('title')} placeholder='Title' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.title?.message}
+
+
+
+                        <MultipleSelect category='category' register={register} error={errors.category} />
+
+                        <textarea name="description" {...register('description')} placeholder='Description' className='mt-4 mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.description?.message}
+                        <input type="text" name="price" {...register('price')} placeholder='Price' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.price?.message}
+                        <input type="file" name="image" {...register('image')} placeholder='Image' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        {errors.image?.message}
+                        <input type="submit" value="Submit" className='mt-4 px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
+                    </form>
+
                 </div>
-                <div className='w-96  px-6 py-6 flex items-center'>
+
+
+                <div className='w-96  px-6 py-6 md:flex items-center hidden'>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full'>
                         <input type="email" name='email' value={manager.email} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.managerEmail?.message}

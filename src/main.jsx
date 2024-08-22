@@ -39,6 +39,7 @@ import ManagerUpdateForm from './components/admin/ManagerUpdateForm';
 import AdminProfile from './components/admin/AdminProfile';
 import Myturf from './components/manager/Myturf';
 import MyTurfupdateForm from './components/manager/MyTurfupdateForm';
+import BookedData from './components/manager/BookedData';
 
 
 
@@ -149,20 +150,24 @@ const router = createBrowserRouter([
         element: <ManagerDashbordPage />
       },
       {
-        path:"/manager/my-turf",
-        element:<Myturf />
+        path: "/manager/my-turf",
+        element: <Myturf />
       },
       {
-path:"/manager/turfs/update/:id",
-element:<MyTurfupdateForm />
+        path: "/manager/turfs/update/:id",
+        element: <MyTurfupdateForm />
+      },
+      {
+        path: "/manager/bookings",
+        element: <BookedData />
       },
       {
         path: "/manager/add-turf",
         element: <AddTurfPage />
       },
       {
-        path:"/manager/profile",
-        element:<AdminProfile />
+        path: "/manager/profile",
+        element: <AdminProfile />
       }
     ]
   },
@@ -195,8 +200,8 @@ element:<MyTurfupdateForm />
         element: <UsersTablePage />
       },
       {
-        path:"/admin/profile",
-        element:<AdminProfile />
+        path: "/admin/profile",
+        element: <AdminProfile />
       }
     ]
   }

@@ -60,7 +60,7 @@ const Bookings = () => {
           { withCredentials: true }
         );
         const turfsData = response.data;
-       // console.log(turfsData);
+        // console.log(turfsData);
         setCartTurfs(turfsData);
 
       } catch (error) {
@@ -75,18 +75,18 @@ const Bookings = () => {
 
 
 
-  
+
 
   return (
-    <div className='pt-24 bg-stone-50 m-10 rounded-3xl'>
+    <div className='pt-24 bg-stone-50 rounded-3xl  '>
 
 
-{
-  cartTurfs && cartTurfs.map((turf,index)=>
-  <CartCard key={index} userid={user} turf={turf} turfid={turf._id} title={turf.title} description ={turf.description} price = {turf.price} image = {turf.image} />
-  )
-}
-     
+      {
+        cartTurfs && cartTurfs.map((turf, index) =>
+          <CartCard key={index} userid={user} turf={turf} turfid={turf._id} title={turf.title} description={turf.description} price={turf.price} image={turf.image} />
+        )
+      }
+
 
     </div>
   )

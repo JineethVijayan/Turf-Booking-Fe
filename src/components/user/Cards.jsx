@@ -17,7 +17,7 @@ const Cards = ({ image, title, description, price, turfId }) => {
     return (
         <div >
 
-            <div onClick={navigateTo} className="shadow-2xl max-w-sm bg-white border border-gray-200 rounded-lg cursor-pointer my-4  w-80 h-96">
+            <div onClick={navigateTo} className="shadow-2xl max-w-sm bg-white border border-gray-200 rounded-lg cursor-pointer sm:ms-4  w-80 h-96">
                 <div className='p-1'>
                     <img className="rounded-t-lg h-52 w-full object-cover" src={image} alt="" />
                 </div>

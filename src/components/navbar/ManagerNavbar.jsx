@@ -9,6 +9,10 @@ const ManagerNavbar = () => {
             value: "My Turf"
         },
         {
+            path:'/manager/bookings',
+            value:'Bookings'
+        },
+        {
             path: "/manager/add-turf",
             value: "Add Turf"
         },

@@ -36,7 +36,7 @@ const Cricket = () => {
                 <h1 className='text-3xl  text-[#008000]'>Cricket</h1>
             </div>
 
-            <div className=' ps-4 grid grid-cols-3 grid-flow-row gap-4 auto-rows-auto '>
+            <div className=' ps-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-flow-row gap-4 auto-rows-auto '>
 
                 {turfs && turfs.map((turf) =>
                     <Cards key={turf._id}
