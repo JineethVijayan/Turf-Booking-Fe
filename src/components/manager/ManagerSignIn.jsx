@@ -5,6 +5,7 @@ import * as yup from "yup";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance';
 
 
 const managerSigninSchema = yup
@@ -27,10 +28,7 @@ const ManagerSignIn = () => {
     const onSubmit = async (data) => {
 
         try {
-            const res = await axios.post('http://localhost:3001/api/v1/managers/signin',
-                data,
-                { withCredentials: true }
-            )
+            const res = await axiosInstance.post('/managers/signin',data)
             const resData = await res.data;
             // console.log(resData);
             // console.log(resData.role);

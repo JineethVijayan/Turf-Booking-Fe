@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import axiosInstance from '../../config/axiosInstance';
 
 const MyTurfupdateForm = () => {
 
@@ -15,7 +16,7 @@ const MyTurfupdateForm = () => {
         const getTurfs = async () => {
             try {
 
-                const res = await axios.put(`http://localhost:3001/api/v1/turfs/update-turfs/${id}`);
+                const res = await axiosInstance.put(`/turfs/update-turfs/${id}`);
 
                 const Data = await res.data;
 
@@ -36,7 +37,7 @@ const MyTurfupdateForm = () => {
         event.preventDefault();
 
         try {
-            const res = await axios.put(`http://localhost:3001/api/v1/turfs/update-turfs/${id}`, data)
+            const res = await axiosInstance.put(`/turfs/update-turfs/${id}`, data)
             
             alert("data updated succesfully");
             navigate('/manager/my-turf');

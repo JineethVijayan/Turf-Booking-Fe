@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import BookedData from './BookedData';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const Myturf = () => {
@@ -17,9 +18,7 @@ const Myturf = () => {
     const currentManger = async () => {
 
       try {
-        const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
-          { withCredentials: true }
-        )
+        const res = await axiosInstance.get(`/managers/get-current-manager`)
         const resData = res.data;
         //console.log(resData);
         const turfs = resData.turfs;
@@ -38,9 +37,7 @@ const Myturf = () => {
   useEffect(() => {
     const turfs = async () => {
       try {
-        const response = await axios.post(`http://localhost:3001/api/v1/turfs/get-turfsByIds`, { ids: datas },
-          { withCredentials: true }
-        );
+        const response = await axiosInstance.post(`/turfs/get-turfsByIds`, { ids: datas });
         const turfsData = await response.data;
         // console.log(turfsData);
         setMyturfs(turfsData);
@@ -57,9 +54,7 @@ const Myturf = () => {
 
   const remove = async (id) => {
 
-    const res = axios.delete(`http://localhost:3001/api/v1/turfs/delete-turfs/${id}`,
-      { withCredentials: true }
-    );
+    const res = axiosInstance.delete(`/turfs/delete-turfs/${id}`);
     const data = (await res).data;
     //console.log(data);
 

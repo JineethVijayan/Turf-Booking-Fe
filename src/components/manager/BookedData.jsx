@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import axiosInstance from '../../config/axiosInstance';
 
 const BookedData = () => {
 
@@ -10,9 +11,7 @@ const BookedData = () => {
         const currentManger = async () => {
 
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
-                    { withCredentials: true }
-                )
+                const res = await axiosInstance.get(`/managers/get-current-manager`)
                 const resData = res.data;
                 //console.log(resData);
                 const turfs = resData.turfs;
@@ -30,9 +29,7 @@ const BookedData = () => {
     useEffect(() => {
         const bookings = async () => {
             try {
-                const response = await axios.post(`http://localhost:3001/api/v1/booking/get-bookings`, { ids: datas },
-                    { withCredentials: true }
-                );
+                const response = await axiosInstance.post(`/booking/get-bookings`, { ids: datas });
                 const Data = await response.data;
                 // console.log(Data);
                 setBookingDatas(Data)

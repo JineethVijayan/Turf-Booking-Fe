@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const UsersTable = () => {
@@ -13,9 +14,7 @@ const UsersTable = () => {
         const getUsers = async () => {
             try {
 
-                const res = await axios.get("http://localhost:3001/api/v1/user/get-users",
-                    { withCredentials: true }
-                )
+                const res = await axiosInstance.get("/user/get-users")
 
                 const userData =await res.data;
 
@@ -34,9 +33,7 @@ const UsersTable = () => {
 
     const remove =async(id)=>{
         
-        const res = axios.delete(`http://localhost:3001/api/v1/user/delete-users/${id}`,
-            { withCredentials: true }
-        );
+        const res = axiosInstance.delete(`/user/delete-users/${id}`);
         const data = (await res).data;
         console.log(data);
 

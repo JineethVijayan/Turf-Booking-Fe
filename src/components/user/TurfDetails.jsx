@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -32,8 +33,7 @@ const TurfDetails = () => {
 
     const getOneturf = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/v1/turfs/get-oneturfbyId/${id}`,
-          { withCredentials: true });
+        const res = await axiosInstance.get(`/turfs/get-oneturfbyId/${id}`);
         const resData = await res.data;
         setCategoryDatas(resData.category);
         setDatas(resData);
@@ -49,10 +49,10 @@ const TurfDetails = () => {
 
     const getCurrentUser = async () => {
       try {
-        const res = await axios.get("https://turf-booking-fawn.vercel.app/api/v1/user/get-current-user",
-          { withCredentials: true }
-        );
+        const res = await axiosInstance.get("/user/get-current-user");
         const resData = await res.data;
+        console.log(resData);
+        
         setUser(resData);
       } catch (error) {
         console.log(error);
@@ -73,7 +73,7 @@ const TurfDetails = () => {
 
     try {
 
-      const res = await axios.post("https://turf-booking-fawn.vercel.app/api/v1/carts/addCart", { turfId, userId });
+      const res = await axiosInstance.post("/carts/addCart", { turfId, userId });
 
       const resData = await res.data;
 

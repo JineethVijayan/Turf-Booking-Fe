@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const ManagerUpdateForm = () => {
@@ -15,7 +16,7 @@ const ManagerUpdateForm = () => {
         const getTurfs = async () => {
             try {
 
-                const res = await axios.put(`http://localhost:3001/api/v1/managers/update-managers/${id}`);
+                const res = await axiosInstance.put(`/managers/update-managers/${id}`);
 
                 const Data = await res.data;
 
@@ -36,7 +37,7 @@ const ManagerUpdateForm = () => {
         event.preventDefault();
        
         try {
-            const res = await axios.put(`http://localhost:3001/api/v1/managers/update-managers/${id}`, data)
+            const res = await axiosInstance.put(`/managers/update-managers/${id}`, data)
             alert("data updated succesfully");
             navigate('/admin/managers');
         } catch (error) {

@@ -6,6 +6,7 @@ import * as yup from "yup"
 import axios from 'axios'
 import MultipleSelect from './MultipleSelect'
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../config/axiosInstance.js'
 
 
 const schema = yup
@@ -33,7 +34,7 @@ const [manager,setManager] =useState([]);
         const currentManger = async () => {
     
           try {
-            const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
+            const res = await axiosInstance.get(`/managers/get-current-manager`,
               { withCredentials: true }
             )
             const resData = res.data;
@@ -60,19 +61,17 @@ const [manager,setManager] =useState([]);
 
     const onSubmit = async (data) => {
 
-        const requestBody = {
-            title: data.title,
-            category: data.category,
-            description: data.description,
-            price: data.price,
-            managerEmail: data.managerEmail,
-            image: data.image[0], // assuming data.image is a File object
-        };
+        const formData = new FormData();
+        formData.append('title', data.title);
+        formData.append('category', data.category);
+        formData.append('description', data.description);
+        formData.append('price', data.price);
+        formData.append('managerEmail', manager.email); // Set email directly from the state
+        formData.append('image', data.image[0]); // Append the first file from the file input
 
         try {
 
-            const res = await axios.post('http://localhost:3001/api/v1/turfs/add-turfs',
-                requestBody,
+            const res = await axiosInstance.post('/turfs/add-turfs',formData,
                 {
                     withCredentials: true,
                     headers: {
@@ -101,7 +100,7 @@ const [manager,setManager] =useState([]);
                 <div className="w-96 h-96 bg-[url('../images/playground.jpg')] bg-no-repeat bg-cover bg-center  ">
                    
                 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full md:hidden p-8'>
-                        <input type="email" name='email' value={manager.email} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        <input type="email" name='email'  value={manager.email || ''} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.managerEmail?.message}
                         <input type="text" name="title" {...register('title')} placeholder='Title' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.title?.message}
@@ -124,7 +123,7 @@ const [manager,setManager] =useState([]);
 
                 <div className='w-96  px-6 py-6 md:flex items-center hidden'>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full'>
-                        <input type="email" name='email' value={manager.email} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
+                        <input type="email" name='email'  value={manager.email || ''} disabled {...register('managerEmail')} placeholder='Registerd email' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.managerEmail?.message}
                         <input type="text" name="title" {...register('title')} placeholder='Title' className='mb-4 ps-1 py-1.5 rounded shadow  shadow-green-800 ' />
                         {errors.title?.message}

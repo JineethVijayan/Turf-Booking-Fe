@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import ButtonPayment from './ButtonPayment';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const CartCard = ({ title, image, description, price, turf, turfid, userid }) => {
@@ -13,7 +14,7 @@ const CartCard = ({ title, image, description, price, turf, turfid, userid }) =>
     const [updateCart, setUpdateCart] = useState([]);
 
     const handleRemove = async () => {
-        const res = await axios.put("http://localhost:3001/api/v1/carts/delete-cart", { turfid, userid });
+        const res = await axiosInstance.put("/carts/delete-cart", { turfid, userid });
         const resData = await res.data;
         console.log(resData);
         setUpdateCart(resData);

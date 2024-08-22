@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import CartCard from './CartCard';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -16,9 +17,7 @@ const Bookings = () => {
   useEffect(() => {
     const getCurrentUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/v1/user/get-current-user",
-          { withCredentials: true }
-        );
+        const res = await axiosInstance.get("/user/get-current-user");
         const resData = await res.data;
         // console.log(resData);
         setUser(resData._id);
@@ -37,7 +36,7 @@ const Bookings = () => {
       if (user) {
 
         try {
-          const res = await axios.get(`http://localhost:3001/api/v1/carts/get-cartby-userId/${user}`);
+          const res = await axiosInstance.get(`/carts/get-cartby-userId/${user}`);
           const resData = await res.data;
           const cartTurfs = resData.turfIds;
           setCart(cartTurfs);
@@ -56,7 +55,7 @@ const Bookings = () => {
   useEffect(() => {
     const turfs = async () => {
       try {
-        const response = await axios.post(`http://localhost:3001/api/v1/turfs/get-turfsByIds`, { ids: cart },
+        const response = await axiosInstance.post(`/turfs/get-turfsByIds`, { ids: cart },
           { withCredentials: true }
         );
         const turfsData = response.data;

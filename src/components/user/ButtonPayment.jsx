@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -33,8 +34,8 @@ const ButtonPayment = ({ turf }) => {
 
         console.log("select", selectedTurf);
 
-        const response = await axios.post(
-            "http://localhost:3001/api/v1/payment/order",
+        const response = await axiosInstance.post(
+            "/payment/order",
             { amount: selectedTurf.price },
         );
 
@@ -53,8 +54,8 @@ const ButtonPayment = ({ turf }) => {
                 const body = { ...response };
                 console.log(body);
 
-                const validateResponse = await axios.post(
-                    "http://localhost:3001/api/v1/payment/verify",
+                const validateResponse = await axiosInstance.post(
+                    "/payment/verify",
                     body,
                 );
 

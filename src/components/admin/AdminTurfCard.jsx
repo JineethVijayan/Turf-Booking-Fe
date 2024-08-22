@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axiosInstance from '../../config/axiosInstance.js';
 
 const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
 
@@ -11,9 +12,7 @@ const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
     useEffect(() => {
         const getManagerById = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/v1/managers/get-manager/${ _id}`,
-                    {withCredentials:true}
-                )
+                const response = await axiosInstance.get(`/managers/get-manager/${ _id}`)
                 const managerData = await response.data ;
 
                 setManager(managerData);
@@ -26,9 +25,7 @@ const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
 
     const remove = async () => {
 
-        const res = axios.delete(`http://localhost:3001/api/v1/turfs/delete-turfs/${id}`,
-            { withCredentials: true }
-        );
+        const res = axios.delete(`/turfs/delete-turfs/${id}`);
         const data = (await res).data;
         console.log(data);
 

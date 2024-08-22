@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const AdminProfile = () => {
@@ -15,9 +16,7 @@ const AdminProfile = () => {
         const currentManger = async () => {
     
           try {
-            const res = await axios.get(`http://localhost:3001/api/v1/managers/get-current-manager`,
-              { withCredentials: true }
-            )
+            const res = await axiosInstance.get(`/managers/get-current-manager`)
             const resData =await res.data;
             //console.log(resData);
           
@@ -38,9 +37,7 @@ const AdminProfile = () => {
         event.preventDefault();
         try {
             // Send a request to the logout route
-            const res = await axios.post('http://localhost:3001/api/v1/managers/logout',
-                { withCredentials: true }
-            );
+            const res = await axiosInstance.post('/managers/logout');
             const resData = res.data;
             if (resData.message === "Logged out successfully") {
                 localStorage.removeItem('token'); // If using localStorage

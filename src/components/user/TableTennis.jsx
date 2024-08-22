@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import Cards from './Cards';
+import axiosInstance from '../../config/axiosInstance.js';
 
 const TableTennis = () => {
 
@@ -15,7 +16,7 @@ const TableTennis = () => {
 
             try {
 
-                const res = await axios.get(`http://localhost:3001/api/v1/turfs/get-turf/category/${category}`);
+                const res = await axiosInstance.get(`/turfs/get-turf/category/${category}`);
                 const resData = await res.data;
                 console.log(resData);
                 setTurfs(resData);

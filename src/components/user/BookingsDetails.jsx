@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const schema = yup
@@ -52,9 +53,7 @@ const BookingsDetails = () => {
 
         const getCurrentUser = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/api/v1/user/get-current-user",
-                    { withCredentials: true }
-                );
+                const res = await axiosInstance.get("/user/get-current-user");
                 const resData = await res.data;
                 setUser(resData);
 
@@ -85,7 +84,7 @@ const BookingsDetails = () => {
 
         try {
 
-            const res = await axios.post('http://localhost:3001/api/v1/booking/create-booking',
+            const res = await axiosInstance.post('/booking/create-booking',
                 requestBody
 
             )

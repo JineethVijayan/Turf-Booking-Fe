@@ -1,6 +1,7 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react'
 import Cards from './Cards';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -17,7 +18,7 @@ const Football = () => {
 
             try {
 
-                const res = await axios.get(`http://localhost:3001/api/v1/turfs/get-turf/category/${category}`);
+                const res = await axiosInstance.get(`/turfs/get-turf/category/${category}`);
                 const resData = await res.data;
                 console.log(resData);
                 setTurfs(resData);

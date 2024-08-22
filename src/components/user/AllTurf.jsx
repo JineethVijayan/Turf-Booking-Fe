@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Cards from './Cards'
 import axios from 'axios';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -13,7 +14,7 @@ const AllTurf = () => {
         const getAllTurfs = async () => {
             try {
 
-                const res = axios.get('http://localhost:3001/api/v1/turfs/get-turfs');
+                const res = axiosInstance.get('/turfs/get-turfs');
 
                 const data = (await res).data;
 

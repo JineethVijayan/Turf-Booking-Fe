@@ -3,6 +3,7 @@ import Cards from './Cards'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 
@@ -18,7 +19,7 @@ const UserTurfs = () => {
         const getAllTurfs = async () => {
             try {
 
-                const res = axios.get('http://localhost:3001/api/v1/turfs/get-limited-turf');
+                const res = axiosInstance.get('/turfs/get-limited-turf');
 
                 const data = (await res).data;
 

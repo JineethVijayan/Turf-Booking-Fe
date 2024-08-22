@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -28,10 +27,7 @@ const ManagerSignUp = () => {
 
     const onSubmit = async (data) => {
         try {
-            const res = await axios.post('http://localhost:3001/api/v1/managers/signup',
-                data,
-                { withCredentials: true }
-            );
+            const res = await axiosInstance.post('/managers/signup',data);
 
             console.log(res.data.message);
 
