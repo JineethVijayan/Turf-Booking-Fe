@@ -49,7 +49,7 @@ const TurfDetails = () => {
 
     const getCurrentUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/v1/user/get-current-user",
+        const res = await axios.get("https://turf-booking-fawn.vercel.app/api/v1/user/get-current-user",
           { withCredentials: true }
         );
         const resData = await res.data;
@@ -73,7 +73,7 @@ const TurfDetails = () => {
 
     try {
 
-      const res = await axios.post("http://localhost:3001/api/v1/carts/addCart", { turfId, userId });
+      const res = await axios.post("https://turf-booking-fawn.vercel.app/api/v1/carts/addCart", { turfId, userId });
 
       const resData = await res.data;
 
