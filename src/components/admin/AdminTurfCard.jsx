@@ -25,7 +25,7 @@ const AdminTurfCard = ({ id, image, title, description, price, _id }) => {
 
     const remove = async () => {
 
-        const res = axios.delete(`/turfs/delete-turfs/${id}`);
+        const res = axiosInstance.delete(`/turfs/delete-turfs/${id}`);
         const data = (await res).data;
         console.log(data);
 
