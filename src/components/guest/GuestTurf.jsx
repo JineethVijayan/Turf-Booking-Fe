@@ -15,12 +15,16 @@ const GuestTurf = () => {
         const getAllTurfs = async () => {
             try {
 
-                const res = axiosInstance.get('/turfs/get-limited-turf');
+                const res = await axiosInstance.get('/turfs/get-limited-turf');
 
-                const data = (await res).data;
+                const data =  res.data;
 
                 // console.log(data);
-                setTurfs(data);
+                if (Array.isArray(data)) {
+                    setTurfs(data);
+                } else {
+                    console.error("Expected an array but received:", data);
+                }
 
             } catch (error) {
                 console.log(error);
@@ -49,7 +53,7 @@ const GuestTurf = () => {
             <div className='  ps-4   flex  
                       overflow-x-auto no-scrollbar  gap-10 '>
 
-                {turfs && turfs.map((turf) =>
+                { turfs.length > 0 && turfs.map((turf) =>
                     <GuestCards key={turf._id}
                         turfId={turf._id}
                         image={turf.image}
