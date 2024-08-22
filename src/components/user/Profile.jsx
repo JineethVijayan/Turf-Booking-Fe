@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 const Profile = () => {
 
@@ -12,9 +13,9 @@ const Profile = () => {
 
         const getCurrentUser = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/api/v1/user/get-current-user",
-                    { withCredentials: true }
-                );
+
+                const res = await axiosInstance.get('/user/get-current-user');
+               
                 const resData = await res.data;
 
 

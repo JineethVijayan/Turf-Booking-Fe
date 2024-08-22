@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config/axiosInstance.js';
 
 
 const userSigninSchema = yup
@@ -19,11 +20,8 @@ const UserSignIn = () => {
 
   const OnSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3001/api/v1/user/signin",
-        data,
-        { withCredentials: true }
-      );
-
+     
+      const res = await axiosInstance.post("/user/signin", data);
       const resData = res.data;
 
       console.log(resData);
