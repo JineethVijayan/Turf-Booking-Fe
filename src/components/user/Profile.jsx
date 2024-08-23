@@ -34,9 +34,7 @@ const Profile = () => {
     const handleLogout = async () => {
         try {
             // Send a request to the logout route
-            const res = await axios.post('http://localhost:3001/api/v1/user/logout',
-                { withCredentials: true }
-            );
+            const res = await axiosInstance.post('/user/logout');
             const resData = res.data;
             if (resData.message === "Logged out successfully") {
                 localStorage.removeItem('token'); // If using localStorage
