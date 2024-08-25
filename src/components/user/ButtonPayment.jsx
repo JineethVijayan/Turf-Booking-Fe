@@ -44,8 +44,8 @@ const ButtonPayment = ({ turf }) => {
         console.log(order);
 
         const option = {
-            //import.meta.env.VITE_SOME_KEY
-            key:"rzp_test_kjM6VXkw8K1HVt",
+            //
+            key:import.meta.env.VITE_SOME_KEY,
             amount: order.amount,
             currency: order.currency,
             name: "Jineeth",
