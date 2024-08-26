@@ -40,7 +40,7 @@ const AdminProfile = () => {
             const res = await axiosInstance.post('/managers/logout');
             const resData = res.data;
             if (resData.message === "Logged out successfully") {
-                localStorage.removeItem('token'); // If using localStorage
+              //  localStorage.removeItem('token'); // If using localStorage
                 alert("Logged out successfully")
                 navigate('/manager/signin')
             } else {

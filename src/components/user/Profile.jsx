@@ -37,7 +37,7 @@ const Profile = () => {
             const res = await axiosInstance.post('/user/logout');
             const resData = res.data;
             if (resData.message === "Logged out successfully") {
-                localStorage.removeItem('token'); // If using localStorage
+  //              localStorage.removeItem('token'); // If using localStorage
                 alert("Logged out successfully")
                 navigate('/user/signin')
             } else {
