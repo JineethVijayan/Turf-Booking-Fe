@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import axiosInstance from '../../config/axiosInstance';
+import { Link } from 'react-router-dom';
 
 const BookedData = () => {
 
