@@ -45,6 +45,19 @@ const BookedData = () => {
     }, [datas])
 
 
+
+
+    const remove = async (id) => {
+        const res = await axiosInstance.delete(`/booking/delete-booking/${id}`,);
+        const resData = await res.data;
+        console.log(resData);
+        if (resData === 'booking deleted') {
+            window.location.reload();
+        }
+
+    }
+
+
     return (
         <div className='pt-24 p-6'>
             {bookingDatas && bookingDatas.map((data, index) => (
@@ -72,6 +85,10 @@ const BookedData = () => {
 
                     <div className='me-6'>
                         <span> {data.duration}</span>
+                    </div>
+
+                    <div className='me-6'>
+                        <Link onClick={(e) => remove(data._id)} className='items-center sm:px-3 sm:py-2 py-3 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Delete</Link>
                     </div>
 
                 </div>
