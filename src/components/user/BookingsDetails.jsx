@@ -91,6 +91,10 @@ const BookingsDetails = () => {
             const resData = res.data;
             //console.log(resData.message);
 
+            if(resData === "already booked"){
+                alert('already booked')
+            }
+
             if (resData.message === "booking done") {
                 alert("booked successfully");
                 navigate('/user/bookings');

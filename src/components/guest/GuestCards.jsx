@@ -21,7 +21,6 @@ const GuestCards = ({ image, title, description, price, turfId }) => {
             <img className="rounded-t-lg h-52 w-full object-cover" src={image} alt="" />
         </div>
         <div className="p-5">
-            <h1>{turfId}</h1>
             <div className='flex justify-between'>
                 <div >
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-[#008000]">{title}</h5>
