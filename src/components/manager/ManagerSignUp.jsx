@@ -38,6 +38,7 @@ const ManagerSignUp = () => {
             const resData = res.data.message;
 
             if (resData === "signed in !") {
+                alert('Signed up successfully! Please log in.');
                 navigate("/manager/signin")
             }
 
