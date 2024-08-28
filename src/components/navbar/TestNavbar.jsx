@@ -33,13 +33,13 @@ const TestNavbar = () => {
         <nav className=" bg-[#f1faee] p-4  fixed w-full">
             <div className="container mx-auto flex justify-between items-center">
 ///
-                <div class="flex items-center justify-center h-screen bg-gray-50">
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-gray-800">
+                <div class="flex items-center justify-center  bg-gray-50">
+                    <h1 class="text-3xl md:text-3xl font-extrabold text-gray-800">
                         <span class="text-green-600">Athleti</span>
                         <span class="text-yellow-500">X</span>
                     </h1>
                 </div>
-///                
+///
                 <ul className='hidden md:flex space-x-4 text-xl'>
                     {navLinks.map((link, index) =>
 

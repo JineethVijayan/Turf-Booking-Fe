@@ -25,8 +25,8 @@ const ManagerNavbar = () => {
     return (
         <div className='flex justify-between p-4 text-xl fixed w-screen '>
 ///
-            <div class="flex items-center justify-center h-screen bg-gray-50">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-800">
+            <div class="flex items-center justify-center  bg-gray-50">
+                <h1 class="text-3xl md:text-3xl font-extrabold text-gray-800">
                     <span class="text-green-600">Athleti</span>
                     <span class="text-yellow-500">X</span>
                 </h1>
