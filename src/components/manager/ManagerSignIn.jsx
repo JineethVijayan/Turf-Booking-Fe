@@ -38,7 +38,7 @@ const ManagerSignIn = () => {
                 navigate(`/admin/dashbord`)
             } else if (resData.role === 'manager') {
                 navigate(`/manager/my-turf`)
-            } else {
+            } else if (resData.role === 'user') {
               alert("Your not allowed ,Please contact Admin");
             }
 
@@ -71,7 +71,7 @@ const ManagerSignIn = () => {
       <input type="submit" value="Login" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
 
       <p className=' ms-16 mt-4'>
-        User not created yet ?{" "}
+        Manager not created yet ?{" "}
         <Link to="/manager/signup" className="text-blue-500 underline">
           Signup
         </Link>
