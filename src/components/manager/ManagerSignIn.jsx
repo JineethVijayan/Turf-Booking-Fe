@@ -38,6 +38,8 @@ const ManagerSignIn = () => {
                 navigate(`/admin/dashbord`)
             } else if (resData.role === 'manager') {
                 navigate(`/manager/my-turf`)
+            } else {
+              alert("Your not allowed ,Please contact Admin");
             }
 
         } catch (error) {

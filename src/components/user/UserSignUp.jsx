@@ -14,7 +14,10 @@ const schema = yup
         email: yup.string().email().required('please enter your email'),
         password: yup.string()
             .min(4, 'Password must be at least 4 characters long.')
-            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.').required()
+            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.').required(),
+            confirmPassword: yup.string()
+            .oneOf([yup.ref('password'), null], 'Passwords must match')
+            .required('Please confirm your password'),
     })
     .required()
 
@@ -68,6 +71,8 @@ const UserSignUp = () => {
                         {errors.email?.message}
                         <input name='password' type="text" {...register("password")} placeholder='Password' className='mb-4 ps-1 py-1.5 rounded  shadow  shadow-green-800' />
                         {errors.password?.message}
+                        <input name='confirmPassword' type="password" {...register("confirmPassword")} placeholder='Confirm Password' className='mb-4 ps-1 py-1.5 rounded  shadow  shadow-green-800' />
+                        {errors.confirmPassword?.message}
                         <input type="submit" value="Signup" className='px-2 py-1.5 w-24 ms-32 bg-green-800 text-white hover:bg-green-600 hover:text-black rounded' />
                         <p className=' ms-16 mt-4'>
                             User already exist ?{" "}
