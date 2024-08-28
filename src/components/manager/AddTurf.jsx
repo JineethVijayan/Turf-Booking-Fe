@@ -61,13 +61,22 @@ const [manager,setManager] =useState([]);
 
     const onSubmit = async (data) => {
 
+        const fileSizeLimit = 50 * 1024 * 1024; // 50 MB limit
+        const file = data.image[0];
+    
+        if (file.size > fileSizeLimit) {
+            alert('File size too large. Please upload a file smaller than 50MB.');
+            return;
+        }
+    
+
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('category', data.category);
         formData.append('description', data.description);
         formData.append('price', data.price);
         formData.append('managerEmail', manager.email); // Set email directly from the state
-        formData.append('image', data.image[0]); // Append the first file from the file input
+        formData.append('image', file); // Append the first file from the file input
 
         try {
 
