@@ -75,7 +75,7 @@ const Myturf = () => {
                      grid-flow-row gap-4 auto-rows-auto'>
       {
         myturfs && myturfs.map(turf => (
-          <div className="ms-10 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="ms-10 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-80 h-96">
             <Link to="#">
               <img className="rounded-t-lg h-52 w-full object-cover" src={turf.image} alt="" />
             </Link>
