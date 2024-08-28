@@ -41,6 +41,7 @@ export default function MultipleSelect({register,category,error}) {
           multiple
           value={personName}
           onChange={handleChange}
+          renderValue={(selected) => selected.join(', ')}
         >
           {names.map((name) => (
             <MenuItem
