@@ -38,7 +38,7 @@ const ManagerSignUp = () => {
             const resData = res.data.message;
 
             if (resData === "signed in !") {
-                navigate("/manager/dashbord")
+                navigate("/manager/signin")
             }
 
         } catch (error) {
